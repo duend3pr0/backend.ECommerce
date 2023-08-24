@@ -4,19 +4,6 @@ import cookieParser from 'cookie-parser';
 import productsRouter from '../routes/productsRouter.js'
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 class AppExpress
 {
     init()
@@ -30,7 +17,7 @@ class AppExpress
 
     build()
     {
-        this.app.use('api/', productsRouter);
+        this.app.use('/api', productsRouter);
     }
 
     callback()
