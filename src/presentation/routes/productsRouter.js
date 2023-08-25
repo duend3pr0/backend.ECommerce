@@ -1,11 +1,15 @@
 import { Router } from "express"
 
-import { getAll } from '../controllers/productsController.js'
+import { list, getOne, save, updateOne } from '../controllers/productsController.js';
+
 
 
 const productsRouter = Router();
 
 
-productsRouter.get('/products', getAll)
+productsRouter.get('/', list);
+productsRouter.get('/:pid', getOne);
+productsRouter.post('/', save);
+productsRouter.put('/:pid', updateOne);
 
 export default productsRouter;

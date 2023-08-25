@@ -1,7 +1,9 @@
 import express from 'express';
 import cookieParser from 'cookie-parser';
 
-import productsRouter from '../routes/productsRouter.js'
+import productsRouter from '../routes/productsRouter.js';
+
+import errorHandler from '../middlewares/errorHandler.js'
 
 
 class AppExpress
@@ -17,7 +19,8 @@ class AppExpress
 
     build()
     {
-        this.app.use('/api', productsRouter);
+        this.app.use('/api/products', productsRouter);
+        this.app.use(errorHandler)
     }
 
     callback()
