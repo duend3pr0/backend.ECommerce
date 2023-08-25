@@ -26,7 +26,7 @@ export const getOne = async(req, res, next) =>
     const manager = new ProductsManager();
     const product = await manager.getOne(id)
     
-    res.send({status: 'succes', product});    
+    res.send({status: 'succes', product: product});    
   }
   catch (error)
   {

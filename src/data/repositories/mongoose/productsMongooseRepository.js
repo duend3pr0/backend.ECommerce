@@ -2,13 +2,12 @@ import ProductSchema from '../../models/mongoose/productsSchema.js'
 import Product from '../../../domain/entities/product.js';
 import productsSchema from '../../models/mongoose/productsSchema.js';
 
-class ProductRepository
+class ProductMongooseRepository
 {
  async paginate(criteria)
  {
   const { limit, page } = criteria;
-  const productsDocuments = await productsSchema.paginate({}, {limit, page});
-  
+  const productsDocuments = await productsSchema.paginate({}, {limit, page});  
   const { docs, ...pagination} = productsDocuments;
 
   const products = docs.map(document=> new Product({
@@ -83,25 +82,9 @@ class ProductRepository
  });
 }
 
-    async delete(id) {
-        try {
-            const document = await ProductSchema.findByIdAndUpdate(id, { status: false }, { new: true });
-            return new Product({
-                id: document._id,
-                title: document.title,
-                description: document.description,
-                code: document.code,
-                price: document.price,
-                status: document.status,
-                stock: document.stock,
-                category: document.category,
-                thumbnail: document.thumbnail
-            })
-        } catch (error) {
-            console.error(error);
-            throw error;
-        }
-    }
+async delete(id)
+{
+ return await productsSchema.deleteOne({ _id: id })
 }
-
-export default ProductRepository;
+}
+export default ProductMongooseRepository;
