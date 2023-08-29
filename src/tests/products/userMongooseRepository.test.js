@@ -10,7 +10,7 @@ const expect = jest.expect();
 
 const db = DbFactory.create(process.env.DB);
 
-import ProductMongooseRepository from '../../data/repositories/mongoose/productsMongooseRepository.js';
+import ProductMongooseRepository from '../../data/repositories/mongoose/productMongooseRepository.js';
 
 describe("Testing Product Mongoose Repository", () => {
     before(function () {

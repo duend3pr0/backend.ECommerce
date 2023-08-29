@@ -1,4 +1,4 @@
-import ProductSchema from '../../models/mongoose/productsSchema.js'
+import productSchema from '../../models/mongoose/productsSchema.js'
 import Product from '../../../domain/entities/product.js';
 import productsSchema from '../../models/mongoose/productsSchema.js';
 
@@ -7,8 +7,8 @@ class ProductMongooseRepository
  async paginate(criteria)
  {
   const { limit, page } = criteria;
-  const productsDocuments = await productsSchema.paginate({}, {limit, page});  
-  const { docs, ...pagination} = productsDocuments;
+  const productDocuments = await productSchema.paginate({}, {limit, page});  
+  const { docs, ...pagination} = productDocuments;
 
   const products = docs.map(document=> new Product({
     id: document._id,
@@ -21,6 +21,7 @@ class ProductMongooseRepository
     category: document.category,
     thumbnail: document.thumbnail
   }));
+  
   return {
     products,
     pagination
@@ -29,7 +30,7 @@ class ProductMongooseRepository
 
  async getOne(id)
  {
-  const productDocument = await productsSchema.findOne({ _id: id });
+  const productDocument = await productSchema.findOne({ _id: id });
   
   if(!productDocument) throw new Error('Product doesnt exist');
   
@@ -48,7 +49,7 @@ class ProductMongooseRepository
 
  async create(data)
  {
-  const productDocument = await productsSchema.create(data);
+  const productDocument = await productSchema.create(data);
 
   return new Product({
     id: productDocument._id,
@@ -65,7 +66,7 @@ class ProductMongooseRepository
 
  async update(id, body)
  {
-  const productDocument = await productsSchema.findOneAndUpdate( { _id: id }, body, { new: true} );
+  const productDocument = await productSchema.findOneAndUpdate( { _id: id }, body, { new: true} );
   
   if(productDocument) throw new Error('Product doesnt exist');
 
@@ -84,7 +85,7 @@ class ProductMongooseRepository
 
 async delete(id)
 {
- return await productsSchema.deleteOne({ _id: id })
+ return await productSchema.deleteOne({ _id: id })
 }
 }
 export default ProductMongooseRepository;

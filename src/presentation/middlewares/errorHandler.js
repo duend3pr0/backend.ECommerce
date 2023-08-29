@@ -1,3 +1,4 @@
+
 const errorHandler = (err, req, res, next) =>
 {
   if (err?.message.includes('not found'))
@@ -13,17 +14,17 @@ const errorHandler = (err, req, res, next) =>
   else if (err?.message.includes('invalid password.'))
   {
       console.log(err.stack);
-      return res.status(401).send({ message: 'Login failed, invalid password.'});
+      return res.status(401).send({ message: 'Login failed, invalid password.' });
   }
   else if (err?.message.includes('Email and Password invalid format.'))
   {
       console.log(err.stack);
-      return res.status(401).send({ message: 'Email and Password invalid format.'});
+      return res.status(401).send({ message: 'Email and Password invalid format.' });
   }
   else if (err?.message.includes('dont exist'))
   {
       console.log(err.stack);
-      return res.status(404).send({ message: "User don't exist."});
+      return res.status(404).send({ message: 'User don\'t exist.' });
   }
 
 

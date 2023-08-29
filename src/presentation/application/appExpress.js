@@ -1,31 +1,42 @@
 import express from 'express';
 import cookieParser from 'cookie-parser';
 
-import productsRouter from '../routes/productsRouter.js';
+import sessionRouter from '../../presentation/routes/sessionRouter.js';
+import userRouter from '../../presentation/routes/userRouter.js';
+import roleRouter from '../../presentation/routes/roleRouter.js';
+import emailRouter from '../routes/emailRouter.js';
 
-import errorHandler from '../middlewares/errorHandler.js'
-
+import errorHandler from '../../presentation/middlewares/errorHandler.js';
+import compression from 'express-compression';
 
 class AppExpress
 {
     init()
     {
         this.app = express();
-        this.app.use(express.urlencoded({extended: true }));
         this.app.use(express.json());
+        this.app.use(express.urlencoded({ extended: true }));
         this.app.use(cookieParser());
-
+        this.app.use(compression({
+            brotli: {
+                enabled: true,
+                zlib: {}
+            }
+        }));
     }
 
     build()
     {
-        this.app.use('/api/products', productsRouter);
-        this.app.use(errorHandler)
+        this.app.use('/api/sessions', sessionRouter);
+        this.app.use('/api/users', userRouter);
+        this.app.use('/api/roles', roleRouter);
+        this.app.use('/api/email', emailRouter);
+        this.app.use(errorHandler);
     }
 
     callback()
     {
-        return this.app()
+        return this.app;
     }
 
     close()
@@ -35,15 +46,13 @@ class AppExpress
 
     listen()
     {
-        this.server = this.app.listen(process.env.NODE_PORT,()=>
-        {
-            console.log(`Server listening on port ${process.env.NODE_PORT}`);
-        });
+      this.server = this.app.listen(process.env.NODE_PORT, () =>
+      {
+        console.log(`Server listening on port ${process.env.NODE_PORT}`);
+      });
 
-        return this.server;
+      return this.server;
     }
-
 }
 
 export default AppExpress;
-
