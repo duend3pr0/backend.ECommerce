@@ -41,7 +41,7 @@ class AppExpress
 
     close()
     {
-        this.server.close();
+        this.app.close();
     }
 
     listen()
