@@ -1,7 +1,7 @@
-import SessionManager from '../../domain/managers/sessionManager.js';
-import loginValidation from '../../domain/validations/session/loginValidation.js';
+import SessionManager from "../../domain/managers/sessionManager.js";
+import loginValidation from "../../domain/validations/session/loginValidation.js";
 
-export const login = async(req, res, next) =>
+export const login = async  (req, res, next) =>
 {
   try
   {
@@ -13,9 +13,9 @@ export const login = async(req, res, next) =>
     const accessToken = await manager.login(email, password);
 
     res.cookie('accessToken', accessToken, {
-        maxAge: 60 * 60 * 1000,
+        maxAge: 60*60*1000,
         httpOnly: true
-    }).send({ message: 'Login success!', accessToken });
+    }).send({ message: 'Login success!', accessToken })
   }
   catch (e)
   {
@@ -23,7 +23,7 @@ export const login = async(req, res, next) =>
 	}
 };
 
-export const current = async(req, res, next) =>
+export const current = async  (req, res, next) =>
 {
   try
   {
@@ -35,7 +35,7 @@ export const current = async(req, res, next) =>
 	}
 };
 
-export const signup = async(req, res, next) =>
+export const signup = async (req, res, next) =>
 {
   try
   {

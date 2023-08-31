@@ -9,7 +9,7 @@ class AppFactory
 
         const app = apps.get(appType);
         return new app();
-
     }
 }
+
 export default AppFactory;

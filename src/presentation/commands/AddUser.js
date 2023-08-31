@@ -17,13 +17,13 @@ AddUserCommand
     const payload = {
       ...env,
       age: +env.age,
-      isAdmin: env.isAdmin === 'true'
+      isAdmin: env.isAdmin === 'true',
     };
 
     const manager = new UserManager();
     const user = await manager.create(payload);
 
-    if (user)
+    if(user)
     {
        console.log('User created successfully');
     }

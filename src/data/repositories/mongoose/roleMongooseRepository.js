@@ -1,4 +1,4 @@
-import roleSchema from '../../models/mongoose/roleSchema.js';
+import roleSchema from "../../models/mongoose/roleSchema.js";
 import Role from '../../../domain/entities/role.js';
 
 class RoleMongooseRepository
@@ -24,7 +24,7 @@ class RoleMongooseRepository
   {
     const document = await roleSchema.findOne({ _id: id });
 
-    if (!document)
+    if(!document)
     {
       throw new Error('Role dont exist.');
     }
@@ -49,9 +49,9 @@ class RoleMongooseRepository
 
   async updateOne(id, data)
   {
-    const document = await roleSchema.findOneAndUpdate({ _id: id }, data, { new: true });
+    const document = await roleSchema.findOneAndUpdate({ _id: id }, data, { new: true});
 
-    if (!document)
+    if(!document)
     {
       throw new Error('Role dont exist.');
     }

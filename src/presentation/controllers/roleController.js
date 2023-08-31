@@ -1,7 +1,7 @@
-import RoleManager from '../../domain/managers/roleManager.js';
+import RoleManager from "../../domain/managers/roleManager.js";
 
 
-export const list = async(req, res, next) =>
+export const list = async  (req, res, next) =>
 {
   try
   {
@@ -18,7 +18,7 @@ export const list = async(req, res, next) =>
 	}
 };
 
-export const getOne = async(req, res, next) =>
+export const getOne = async (req, res, next) =>
 {
   try
   {
@@ -35,7 +35,7 @@ export const getOne = async(req, res, next) =>
 	}
 };
 
-export const save = async(req, res, next) =>
+export const save = async (req, res, next) =>
 {
   try
   {
@@ -50,7 +50,7 @@ export const save = async(req, res, next) =>
 	}
 };
 
-export const update = async(req, res, next) =>
+export const update = async (req, res, next) =>
 {
   try
   {
@@ -67,7 +67,7 @@ export const update = async(req, res, next) =>
 	}
 };
 
-export const deleteOne = async(req, res, next) =>
+export const deleteOne = async (req, res, next) =>
 {
   try
   {

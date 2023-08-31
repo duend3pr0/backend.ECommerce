@@ -2,14 +2,14 @@ import dotenv from "dotenv";
 dotenv.config();
 
 import { faker } from '@faker-js/faker';
-import DbFactory from "../data/factories/dbFactory.js";
+import DbFactory from "../../data/factories/dBFactory.js";
 import chai from "chai";
 
 const expect = chai.expect;
 
 const db = DbFactory.create(process.env.DB);
 
-import UserMongooseRepository from "../data/repositories/mongoose/userMongooseRepository.js";
+import UserMongooseRepository from "../../data/repositories/mongoose/userMongooseRepository.js";
 
 describe("Testing User Mongoose Repository", () => {
     before(function () {

@@ -1,6 +1,6 @@
-import userSchema from '../../models/mongoose/userSchema.js';
+import userSchema from "../../models/mongoose/userSchema.js";
 import User from '../../../domain/entities/user.js';
-import Role from '../../../domain/entities/role.js';
+import Role from "../../../domain/entities/role.js";
 
 class UserMongooseRepository
 {
@@ -21,7 +21,7 @@ class UserMongooseRepository
           document.role.id,
           document.role.name,
           document.role.permissions
-      ) : null
+      ): null
     }));
 
     return {
@@ -34,7 +34,7 @@ class UserMongooseRepository
   {
     const userDocument = await userSchema.findOne({ _id: id });
 
-    if (!userDocument)
+    if(!userDocument)
     {
       throw new Error('User dont exist.');
     }
@@ -79,15 +79,15 @@ class UserMongooseRepository
         age: userDocument.age,
         password: userDocument.password,
         isAdmin: userDocument?.isAdmin,
-        role: null
+        role: null,
     });
   }
 
   async updateOne(id, data)
   {
-    const userDocument = await userSchema.findOneAndUpdate({ _id: id }, data, { new: true });
+    const userDocument = await userSchema.findOneAndUpdate({ _id: id }, data, { new: true});
 
-    if (!userDocument)
+    if(!userDocument)
     {
       throw new Error('User dont exist.');
     }

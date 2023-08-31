@@ -7,7 +7,7 @@ class ProductsManager
 {
  constructor()
  {
-    this.productsRepository = container.resolve('ProductsRepository');
+    this.productsRepository = container.resolve('ProductRepository');
  }
  
  async paginate(criteria)
@@ -22,7 +22,7 @@ class ProductsManager
 
  async create(data)
  {
-   await productCreateValidation.parseAsync(data);
+  //  await productCreateValidation.parseAsync(data);
    
    const product = await this.productsRepository.create(data);
 
@@ -36,8 +36,11 @@ class ProductsManager
    return this.productsRepository.updateOne( id,{...data})
  }
 
-
-
+ async deleteOne(id)
+ {
+   await idValidation.parseAsync({ id });
+   return this.productsRepository.deleteOne(id);
+ }
 }
 
 export default ProductsManager;

@@ -1,6 +1,6 @@
 import { Command } from 'commander';
-import SessionManager from '../../domain/managers/sessionManager.js';
-import { defaultRoles } from '../../config/index.js';
+import UserManager from '../../domain/managers/userManager.js';
+import {defaultRoles} from "../../config/index.js";
 
 const AddPermissions = new Command('addPermissions');
 

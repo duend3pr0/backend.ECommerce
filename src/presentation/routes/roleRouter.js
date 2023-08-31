@@ -1,7 +1,7 @@
 import { Router } from 'express';
-import auth from '../middlewares/auth.js';
-import { list, deleteOne, getOne, save, update } from '../controllers/roleController.js';
-import authorization from '../middlewares/authorization.js';
+import auth from "../middlewares/auth.js";
+import { list, deleteOne, getOne, save, update } from "../controllers/roleController.js";
+import authorization from "../middlewares/authorization.js";
 
 const roleRouter = Router();
 

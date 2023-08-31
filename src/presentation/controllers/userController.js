@@ -1,6 +1,6 @@
-import UserManager from '../../domain/managers/userManager.js';
+import UserManager from "../../domain/managers/userManager.js";
 
-export const list = async(req, res, next) =>
+export const list = async  (req, res, next) =>
 {
   try
   {
@@ -17,7 +17,7 @@ export const list = async(req, res, next) =>
 	}
 };
 
-export const getOne = async(req, res, next) =>
+export const getOne = async (req, res, next) =>
 {
   try
   {
@@ -26,7 +26,7 @@ export const getOne = async(req, res, next) =>
     const manager = new UserManager();
     const user = await manager.getOne(id);
 
-    res.send({ status: 'success', user: { ...user, password: undefined } });
+    res.send({ status: 'success', user: { ...user, password: undefined} });
   }
   catch (e)
   {
@@ -34,14 +34,14 @@ export const getOne = async(req, res, next) =>
 	}
 };
 
-export const save = async(req, res, next) =>
+export const save = async (req, res, next) =>
 {
   try
   {
     const manager = new UserManager();
     const user = await manager.create(req.body);
 
-    res.send({ status: 'success', user, message: 'User created.' });
+    res.send({ status: 'success', user, message: 'User created.' })
   }
   catch (e)
   {
@@ -49,7 +49,7 @@ export const save = async(req, res, next) =>
 	}
 };
 
-export const update = async(req, res, next) =>
+export const update = async (req, res, next) =>
 {
   try
   {
@@ -66,7 +66,7 @@ export const update = async(req, res, next) =>
 	}
 };
 
-export const deleteOne = async(req, res, next) =>
+export const deleteOne = async (req, res, next) =>
 {
   try
   {
@@ -75,7 +75,7 @@ export const deleteOne = async(req, res, next) =>
     const manager = new UserManager();
     await manager.deleteOne(id);
 
-    res.send({ status: 'success', message: 'User deleted.' });
+    res.send({ status: 'success', message: 'User deleted.' })
   }
   catch (e)
   {

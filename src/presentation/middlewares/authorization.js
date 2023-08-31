@@ -5,13 +5,13 @@ const authorization = (permission) =>
     {
         const user = req.user;
 
-        if (!user.isAdmin && !user.role?.permissions.includes(permission))
+        if(!user.isAdmin && !user.role?.permissions.includes(permission))
         {
-            return res.status(401).send({ message: 'Not authorization!' });
+            return res.status(401).send({ message: 'Not authorization!'});
         }
 
         next();
-    };
-};
+    }
+}
 
 export default authorization;

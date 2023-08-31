@@ -1,5 +1,5 @@
-import mongoose, { Schema } from 'mongoose';
-import paginate from 'mongoose-paginate-v2';
+import mongoose, { Schema } from "mongoose";
+import paginate from "mongoose-paginate-v2";
 
 const userCollection = 'users';
 
@@ -15,12 +15,12 @@ const UserSchema = new Schema({
 
 UserSchema.plugin(paginate);
 
-UserSchema.pre('find', function () {
-  this.populate(['role']);
-});
-
-UserSchema.pre('findOne', function () {
-  this.populate(['role']);
-});
+// UserSchema.pre('find', function () {
+//   this.populate(['role']);
+// });
+//
+// UserSchema.pre('findOne', function () {
+//   this.populate(['role']);
+// });
 
 export default mongoose.model(userCollection, UserSchema);

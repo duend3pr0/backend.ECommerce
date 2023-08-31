@@ -1,4 +1,4 @@
-import MongooseAdapter from './mongooseAdapter.js';
+import MongooseAdapter from "./mongooseAdapter.js";
 
 class DbFactory
 {
@@ -9,11 +9,12 @@ class DbFactory
 
         if(!dbs.has(dbType))
         {
-            throw Error('DbAdapter not fount');
+            throw Error('DbAdapter not found');
         }
 
         const db = dbs.get(dbType);
         return new db();
     }
 }
+
 export default DbFactory;

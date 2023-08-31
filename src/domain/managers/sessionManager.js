@@ -1,7 +1,7 @@
-import { createHash, generateToken, isValidPassword } from '../../shared/index.js';
-import userCreateValidation from '../validations/user/userCreateValidation.js';
-import loginValidation from '../validations/session/loginValidation.js';
-import container from '../../container.js';
+import {createHash, generateToken, isValidPassword} from "../../shared/index.js";
+import userCreateValidation from "../validations/user/userCreateValidation.js";
+import loginValidation from "../validations/session/loginValidation.js";
+import container from "../../container.js";
 
 class SessionManager
 {
@@ -16,9 +16,9 @@ class SessionManager
 
     const user = await this.userRepository.getOneByEmail(email);
 
-    if (!user.email)
+    if(!user.email)
     {
-      throw new Error('User doesnt exist.');
+      throw new Error('User dont exist.');
     }
 
     const isHashedPassword = await isValidPassword(password, user.password);
@@ -38,12 +38,12 @@ class SessionManager
     const dto = {
       ...payload,
       password: await createHash(payload.password, 10)
-    };
+    }
 
     const role = await this.roleRepository.getByName('Client');
     const user  = await this.userRepository.create(dto, role);
 
-    return { ...user, password: undefined };
+    return { ...user, password: undefined};
   }
 }
 

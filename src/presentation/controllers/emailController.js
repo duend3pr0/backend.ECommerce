@@ -1,6 +1,6 @@
-import EmailManager from '../../domain/managers/emailManager.js';
+import EmailManager from "../../domain/managers/emailManager.js";
 
-export const sendEmail = async(req, res, next) =>
+export const sendEmail = async  (req, res, next) =>
 {
   try
   {

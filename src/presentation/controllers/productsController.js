@@ -65,6 +65,23 @@ export const updateOne = async(req, res, next) =>
   {
    next(error) 
   }
+  
+};
+export const deleteOne = async (req, res, next) =>
+{
+  try
+  {
+    const { id } = req.params;
+
+    const manager = new ProductsManager();
+    await manager.deleteOne(id);
+
+    res.send({ status: 'success', message: 'Product deleted.' })
+  }
+  catch (e)
+  {
+		next(e);
+	}
 };
 
 

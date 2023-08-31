@@ -4,21 +4,21 @@ class MongooseAdapter
 {
     async init(uri)
     {
-        this.connection = await mongoose.connect(uri,{
-            useNewUrlParser: true,
-            useUnifiedTopology: true
+        this.connection = await mongoose.connect(uri, {
+          useNewUrlParser: true,
+          useUnifiedTopology: true
         });
     }
-    
+
     async close()
     {
-        await this.connection.disconnect();
+      await this.connection.disconnect();
     }
 
     async drop()
     {
-        await this.connection.dropDatabase();
+      await this.connection.dropDatabase();
     }
-
 }
+
 export default MongooseAdapter;

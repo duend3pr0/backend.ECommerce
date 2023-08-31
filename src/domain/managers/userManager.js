@@ -1,8 +1,8 @@
-import userCreateValidation from '../validations/user/userCreateValidation.js';
-import userUpdateValidation from '../validations/user/userUpdateValidation.js';
-import idValidation from '../validations/shared/idValidation.js';
-import { createHash } from '../../shared/index.js';
-import container from '../../container.js';
+import userCreateValidation from "../validations/user/userCreateValidation.js";
+import userUpdateValidation from "../validations/user/userUpdateValidation.js";
+import idValidation from "../validations/shared/idValidation.js";
+import {createHash} from "../../shared/index.js";
+import container from "../../container.js";
 
 class UserManager
 {
@@ -34,7 +34,7 @@ class UserManager
     const dto = {
       ...data,
       password: await createHash(data.password, 10)
-    };
+    }
 
     const user = await this.userRepository.create(dto);
 

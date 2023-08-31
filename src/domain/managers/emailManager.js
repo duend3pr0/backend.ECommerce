@@ -1,6 +1,6 @@
-import nodemailer from 'nodemailer';
+import nodemailer from "nodemailer";
 import { resolve } from 'path';
-import fs from 'fs';
+import fs from "fs";
 import Handlebars from 'handlebars';
 
 class EmailManager

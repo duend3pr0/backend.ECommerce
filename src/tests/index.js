@@ -1,13 +1,13 @@
-import dotenv from 'dotenv';
+import dotenv from "dotenv";
 dotenv.config();
 
-import AppFactory from '../presentation/factories/appFactory.js';
-import DbFactory from '../data/factories/dbFactory.js';
+import AppFactory from "../presentation/factories/appFactory.js";
+import DbFactory from "../data/factories/dbFactory.js";
 
 const initServer = async() =>
 {
   const db = DbFactory.create(process.env.DB);
-  await db.init(process.env.DB_TEST_URI);
+  await db.init(process.env.DB_URI);
 
   const app = AppFactory.create();
 
@@ -17,7 +17,7 @@ const initServer = async() =>
   return {
     app,
     db
-  };
+  }
 };
 
 export default initServer;

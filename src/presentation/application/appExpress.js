@@ -1,13 +1,15 @@
 import express from 'express';
-import cookieParser from 'cookie-parser';
+import cookieParser from "cookie-parser";
 
-import sessionRouter from '../../presentation/routes/sessionRouter.js';
-import userRouter from '../../presentation/routes/userRouter.js';
-import roleRouter from '../../presentation/routes/roleRouter.js';
-import emailRouter from '../routes/emailRouter.js';
+import sessionRouter from "../../presentation/routes/sessionRouter.js";
+import userRouter from "../../presentation/routes/userRouter.js";
+import roleRouter from "../../presentation/routes/roleRouter.js";
+import emailRouter from "../routes/emailRouter.js";
+import productsRouter from "../routes/productsRouter.js";
+import cartRouter from "../routes/cartRouter.js";
 
-import errorHandler from '../../presentation/middlewares/errorHandler.js';
-import compression from 'express-compression';
+import errorHandler from "../../presentation/middlewares/errorHandler.js";
+import compression from "express-compression";
 
 class AppExpress
 {
@@ -15,13 +17,13 @@ class AppExpress
     {
         this.app = express();
         this.app.use(express.json());
-        this.app.use(express.urlencoded({ extended: true }));
+        this.app.use(express.urlencoded({extended: true}));
         this.app.use(cookieParser());
         this.app.use(compression({
             brotli: {
                 enabled: true,
                 zlib: {}
-            }
+            },
         }));
     }
 
@@ -31,6 +33,8 @@ class AppExpress
         this.app.use('/api/users', userRouter);
         this.app.use('/api/roles', roleRouter);
         this.app.use('/api/email', emailRouter);
+        this.app.use('/api/products', productsRouter);
+        this.app.use('/api/carts', cartRouter);
         this.app.use(errorHandler);
     }
 
@@ -41,13 +45,12 @@ class AppExpress
 
     close()
     {
-        this.app.close();
+        this.server.close();
     }
 
     listen()
     {
-      this.server = this.app.listen(process.env.NODE_PORT, () =>
-      {
+      this.server = this.app.listen(process.env.NODE_PORT, () => {
         console.log(`Server listening on port ${process.env.NODE_PORT}`);
       });
 
